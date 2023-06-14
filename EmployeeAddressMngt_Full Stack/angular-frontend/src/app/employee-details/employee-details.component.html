@@ -1,0 +1,70 @@
+<ng-container *ngIf="employee; else loading">
+  <div class="w-100">
+    <div class="card">
+      <div class="card-body">
+        <h4>Employee detail</h4>
+
+        <div class="d-flex flex-row my-4">
+          <h6>First name</h6>
+          <h6 class="px-2">:</h6>
+          <h6>{{ employee.firstName }}</h6>
+        </div>
+
+        <div class="d-flex flex-row my-4">
+          <h6>Last name</h6>
+          <h6 class="px-2">:</h6>
+          <h6>{{ employee.lastName }}</h6>
+        </div>
+
+        <div *ngFor="let address of employee.addresses">
+          <h4>{{ address.type }} address</h4>
+          <div class="d-flex flex-row my-4">
+            <h6>Line 1</h6>
+            <h6 class="px-2">:</h6>
+            <h6>{{ address.line1 }}</h6>
+          </div>
+
+          <div class="d-flex flex-row my-4">
+            <h6>Line 2</h6>
+            <h6 class="px-2">:</h6>
+            <h6>{{ address.line2 }}</h6>
+          </div>
+
+          <div class="d-flex flex-row my-4">
+            <h6>City</h6>
+            <h6 class="px-2">:</h6>
+            <h6>{{ address.city }}</h6>
+          </div>
+
+          <div class="d-flex flex-row my-4">
+            <h6>State</h6>
+            <h6 class="px-2">:</h6>
+            <h6>{{ address.state }}</h6>
+          </div>
+
+          <div class="d-flex flex-row my-4">
+            <h6>Postal code</h6>
+            <h6 class="px-2">:</h6>
+            <h6>{{ address.postalCode }}</h6>
+          </div>
+        </div>
+
+        <h4>Documents</h4>
+        <ng-container
+          *ngIf="getUploadedFilesNames()?.length > 0; else noDocuments"
+        >
+          <div *ngFor="let fileName of getUploadedFilesNames()">
+            <h6 class="text-muted">{{ fileName }}</h6>
+          </div>
+        </ng-container>
+        <ng-template #noDocuments>
+          <h6 class="text-muted">No Documents</h6>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <h6>Loading ...</h6>
+</ng-template>

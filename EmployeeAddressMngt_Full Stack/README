@@ -1,0 +1,24 @@
+Dependencies:
+
+1. Mysql Server (Set username=root, password=root@123456)
+2. Azure data studio
+3. Sts tool (eclipse)
+4. Vs code
+5. NodeJs
+6. Java 11
+
+Steps to run:
+
+1. Open the Azure data studio and connect to mysql server (U might need Mysql plugin to see Mysql connection option)
+2. Execute all the queries mention in PreStartupSql.sql
+3. Open STS tool > import the Backend
+4. After loading project to STS tool, the IDE auto builds the project, wait for it ot complete
+5. In the src>main>resource in application.properties update the
+   a. spring.datasource.username=root
+   b. spring.datasource.password=root@123456
+   c. Hit save
+6. Run the springboot application (Keep it open and running in background)
+7. Open VSCode and open the frontend folder
+8. Open terminal/cmd fire command npm install
+9. After the above completes fire up npm start
+10. Go to localhost:4200/employees in browser and done !
